@@ -5,24 +5,16 @@ glas = 0
 res = set()
 for x in permutations(s, r = 5): #букв должно быть 5
     a = ''.join(x)
-    for i in a:
-        if i in 'RSLV':
-            sogl += 1
-        if i in "YOA":
-           glas += 1
-    #sogl = sum(a.count(c) for c in 'RSLV')
-    #glas = sum(a.count(c) for c in 'YOA')
+    sogl = sum(a.count(c) for c in 'RSLV')
+    glas = sum(a.count(c) for c in 'YOA')
     p = all(d+b not in a for d in 'YOA' for b in 'YOA') #TRUE FALSE 
     if sogl > glas and p == True:
         res.add(a)
         print(a)
-    sogl = 0
-    glas = 0
 print(len(res))
 print(sogl)
 print(glas)
-
-
-
-
-
+#Ярослав составляет коды из букв, входящих в слово ЯРОСЛАВ.
+#Код должен состоять из 5 букв, буквы в коде не должны повторяться, согласных в
+#коде должно быть больше, чем гласных, две гласные буквы нельзя ставить рядом.
+#сколько кодов может составить Ярослав?
