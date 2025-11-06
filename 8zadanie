@@ -1,0 +1,12 @@
+from itertools import permutations
+s = 'DEIKSTRA'
+res = set()
+for x in permutations(s):
+    a = ''.join(x)
+    a = a[:6]  #только 6 букв
+    for c in 'DKSTR':
+        if a.count('I') == 1 and ('I' + c in a): 
+            res.add(a)
+print(len(res))
+
+    

@@ -1,0 +1,10 @@
+from itertools import permutations, product  #permutation(столько раз, сколько заявили); product декартова произведение
+s = 'IGROK'
+res = set()
+for x in permutations(s):
+    a = ''.join(x) 
+    if a[0] != 'K' and 'ROK' not in a:
+        res.add(a)
+        print(a)
+print(len(res))
+

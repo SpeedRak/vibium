@@ -1,0 +1,14 @@
+from itertools import product
+s = 'ЩРЮИ'
+s = sorted(s)
+b = set()
+i = 0
+for x in product(s, repeat=5): #4096 всего
+    a = ''.join(x)
+    if a[0] == 'Щ' and a[-1] == 'И':
+        i += 1
+        print(i, a)
+    else:
+        i += 1
+
+    

@@ -1,0 +1,9 @@
+from itertools import product
+s = '0123456789ABCDE'
+s1 = 'ABCDE'
+k = set()
+for x in product(s, repeat=5):
+    a = ''.join(x)
+    if a[0] != '0' and a.count('8') == 1 and (a.count('A') + a.count('B') + a.count('C') + a.count('D') + a.count('E')) >= 2:
+        k.add(a)
+print(len(k))

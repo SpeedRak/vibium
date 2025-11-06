@@ -1,0 +1,8 @@
+from itertools import permutations, product
+s = 'MASLO'
+b = set()
+for x in product(s, repeat=6):
+    a = ''.join(x)
+    if sum(a.count(c) for c in 'AO') == 1:
+        b.add(a)
+print(len(b))

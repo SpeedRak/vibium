@@ -1,0 +1,8 @@
+from itertools import product
+s = "VASY"
+b = set()
+for x in product(s, repeat=5): #product берет 2 раза слово VASY v-v v-a v-s v-y, a-v
+    a = ''.join(x)
+    if "A" in a:
+        b.add(a)
+print(len(b))
