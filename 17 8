@@ -1,0 +1,31 @@
+def nechet(n):
+    flag = 1
+    chet = '02468'
+    for i in str(n):
+        if i in chet: flag *= 0
+    return flag 
+def chet(n):
+    flag = 1
+    nechet = '13579'
+    for i in str(n):
+        if i in nechet: flag *= 0
+    return flag 
+
+spisok1 = open('17 8 file.txt')
+x1 = int(spisok1.readline())
+k = 0
+summa = []
+for x2 in spisok1:
+    x2 = int(x2)
+    if chet(x1) == 1:
+        if nechet(x2) == 1: 
+            k += 1
+            summa += [int(x1) + int(x2)]
+    elif nechet(x1) == 1:
+        if chet(x2) == 1: 
+            k += 1
+            summa += [int(x1) + int(x2)]
+    x1 = int(x2)
+print(k, max(summa))
+
+# В текстовом файле представлен набор чисел от 0 до 10000 включительно. Необходимо найти количество пар чисел, где одно число состоит только из четных цифр, а другое только из нечетных. Известно, что парой принято называть два стоящих подряд элемента последовательности. В качестве ответа укажите количество подходящих пар и наибольшую среди всех их сумм.

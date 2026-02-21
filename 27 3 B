@@ -1,0 +1,44 @@
+f = open('27 3 B.txt')
+stars = []
+for i in f:
+    stars += [list(map(float, i.replace(',', '.').split()))]
+clasters = {1:[], 2:[], 3:[], 4:[]}
+for star in stars:
+    x, y = star
+    if y > 15 and x < 15:
+        clasters[1] += [star]
+    elif x < 15.5 and y < 10:
+        clasters[2] += [star]
+    elif x > 15.5 and y < 13:
+        clasters[3] += [star]
+    elif x > 22 :
+        clasters[4] += [star]
+# print(len(stars))
+# print (len(clasters[1]), len(clasters[2]), len(clasters[3]))
+def dlina(star1, star2):
+    x1, y1 = star1
+    x2, y2 = star2
+    return ((x2-x1)**2 + (y2 - y1)**2)**0.5
+def centr(claster):
+    mindlina = 10000000000000000
+    for star1 in claster:
+        summa = 0
+        for star2 in claster:
+            summa += dlina(star1, star2)
+        if mindlina > summa:
+            mindlina = summa
+            result = star1
+    return result
+px = []
+py = []
+for claster in clasters:
+    px += [centr(clasters[claster])[0]]
+    py += [centr(clasters[claster])[1]]
+#print(px, py)
+px = int((sum(px) / 4) * 10000)
+py = int((sum(py) / 4) * 10000)
+print(px, py)
+
+
+
+
