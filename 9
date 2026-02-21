@@ -1,0 +1,26 @@
+def f(n):
+    if len(set(n)) == len(n):
+        return True
+    else:
+        return False
+def g(n):
+    maxim = max(n)
+    n.remove(maxim)
+    if maxim > sum(n):
+        return True
+    else:
+        return False
+k = 0
+for i in open('9 0 file.csv'):
+    x = list(map(int, i.split(';')))
+    if f(x) == True and g(x) == False:
+        k += 1
+    elif f(x) == False and g(x) == True:
+        k += 1
+print(k)
+
+#Откройте файл электронной таблицы, содержащий в каждой строке шесть целых чисел. 
+#Определите количество строк таблицы, содержащих числа, для которых выполнено ровно одно из следующих условий:
+#– все числа различны; 
+#– наибольшее число в строке больше суммы остальных чисел в этой строке.
+#В ответе запишите только число.

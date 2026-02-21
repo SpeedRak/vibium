@@ -1,0 +1,12 @@
+from math import *
+k = 0
+for i in open('9 5 file.csv'):
+    x = list(map(int, i.split(';')))
+    nepov = (u for u in x if x.count(u) == 1)
+    pov = [y for y in x if x.count(y) == 4]
+    if len(set(x)) == 3 and len(pov) == 4:
+        if pov[0] ** 2 < sum(nepov):
+            
+            k += 1
+print(k)
+
