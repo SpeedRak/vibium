@@ -1,0 +1,27 @@
+from functools import *
+@lru_cache(None)
+def f(A, x, y):
+    return (x > A) or (y > A) or ((y - 2*x + 12) != 0)
+k = []
+for A in range(1, 1000):
+    flag = True
+
+    for x in range(1000):
+        for y in range(100):
+            if f(A, x, y) != 1:
+                flag = False
+                break
+        if flag == False:
+            break
+    if flag == False:
+        continue
+    else:
+        k += [A]
+print(k)
+print('hui')
+
+# Для какого наибольшего целого неотрицательного числа А формула
+
+# (x > A) ∨ (y > A) ∨ (y – 2x + 12 ≠ 0)
+
+# тождественно истинна (т.е. принимает значение 1) при любых целых неотрицательных x и y.
