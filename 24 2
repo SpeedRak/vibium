@@ -1,0 +1,24 @@
+f = open('24 2 file.txt').readline()
+buk = 'ABC'
+cif = '98'
+res = 0
+slovo = f[0]
+for i in range(1, len(f)):
+    if slovo[-1] in buk and f[i] in cif:
+        slovo += f[i]
+        res = max(res, len(slovo))
+    elif slovo[-1] in cif and f[i] in buk:
+        slovo += f[i]
+        res = max(res, len(slovo))
+    else:
+        slovo = f[i]
+print(res)
+    
+# Текстовый файл состоит из символов,
+#  обозначающих буквы латинского алфавита А, В и С 
+# и цифры 8 и 9.
+
+# Определите в прилагаемом файле максимальное количество 
+# идущих подряд символов, среди которых ни одна буква не стоит рядом с буквой, 
+# а цифра — с цифрой.
+
