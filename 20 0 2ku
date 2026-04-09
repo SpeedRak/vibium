@@ -1,0 +1,24 @@
+from functools import *
+from math import *
+
+def step(n):
+    (a, b) = n
+    return (a + 10, b), (a * 2, b), (a, b+ 10), (a, b * 2)
+def win(n):
+    return prod(n) >= 541
+    # (a, b) = n
+    # return (a * b ) >= 541
+def game(n): #chetaem snizu vverh
+    if any(win(n1) == True for n1 in step(n)): return 1  #ivan
+    if all(game(n2) == 1 for n2 in step(n)): return 2
+    if any(game(n3) == 2 for n3 in step(n)): return 3
+
+print([s for s in range(1, 91) if game((6, s)) == 3])
+
+# Для игры, описанной в предыдущем задании, найдите наименьшее и наибольшее значения S, при которых у Пети есть выигрышная стратегия, причём одновременно выполняются два условия:
+
+# − Петя не может выиграть за один ход;
+
+# − Петя может выиграть своим вторым ходом независимо от того, как будет ходить Ваня.
+
+# Найденные значения запишите в ответе в порядке возрастания.
