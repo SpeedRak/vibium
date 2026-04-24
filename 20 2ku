@@ -1,0 +1,22 @@
+from functools import *
+@lru_cache(None)
+def step(n):
+    (a, b) = n
+    return (a+2,b), (a, b+2), (a*2, b), (a, b*2)
+@lru_cache(None)
+
+def win(n):
+    return sum(n) >= 65
+@lru_cache(None)
+
+def game(n):
+    if any(win(n1) == 1 for n1 in step(n)): return 1
+    if all(game(n2) == 1 for n2 in step(n)): return 2
+    if any(game(n3) == 2 for n3 in step(n)): return 3
+
+print([s for s in range(1, 60) if game((5, s)) == 3])
+print('huirt')
+
+# Укажите минимальное значение S, при котором у Пети есть выигрышная стратегия, 
+# причём Петя не может выиграть первым ходом, но может выиграть своим вторым ходом независимо от того, 
+# как будет ходить Ваня.
