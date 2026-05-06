@@ -1,27 +1,19 @@
-from functools import *
-@lru_cache(None)
-def f(A, x, y):
-    return (x > A) or (y > A) or ((y - 2*x + 12) != 0)
+def f(nach, kon):
+    for x in range(-1000, 4000):
+        a = nach <= x/10 <= kon
+        b = 36 <= x/10 <= 75 # /10 потому, что любые х, включая дробные
+        c = 60 <= x/10 <= 110
+        if ((not a) <= (b == c)) == 0:
+            return False
+    return True
 k = []
-for A in range(1, 1000):
-    flag = True
+for nach in range(200):
+    for kon in range(nach, 200):
+        if f(nach, kon) == True:
+            k += [kon-nach]
+print(min(k))
 
-    for x in range(1000):
-        for y in range(100):
-            if f(A, x, y) != 1:
-                flag = False
-                break
-        if flag == False:
-            break
-    if flag == False:
-        continue
-    else:
-        k += [A]
-print(k)
-print('hui')
-
-# Для какого наибольшего целого неотрицательного числа А формула
-
-# (x > A) ∨ (y > A) ∨ (y – 2x + 12 ≠ 0)
-
-# тождественно истинна (т.е. принимает значение 1) при любых целых неотрицательных x и y.
+# На числовой прямой даны два отрезка: B = [36;75] и C = [60;110].
+# Укажите наименьшую возможную длину такого отрезка A, что логическое
+# выражение
+# истинно (т.е. принимает значение 1 при любом значении переменной х.
